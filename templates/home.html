@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Multimedia ma'lumotlari</title>
+<style>
+    header {
+            background-color: #3888df;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+    div img {
+        max-width: 90px;
+        max-height: 100px;
+        }
+
+    section {
+        background-color: lime;
+        margin: 5px;
+        padding: 100px;
+        width: 700px;
+        height: 50px;
+        float: right;
+        }
+
+    a {
+        text-decoration: underline;
+        }
+
+</style>
+</head>
+<body>
+    <header>
+        <h1>Multimedia ma’lumotlar bazasi</h1>
+            <div>
+                <span>
+                    <a href="{% url 'base' %}"><img src="https://static.tuit.uz/uploads/1/W73eM8T-hn5cLRoa_rQWKshn3eUutXvm.png" alt="error"></a>
+                </span>
+            </div>
+    </header>
+    {% for i in temp %}
+        <a href="info?themes={{ i.id }}" style="font-size: 20px;">{{ i.id }}{{ i.name }}</a><br>
+    {% endfor %}
+</body>
+</html>

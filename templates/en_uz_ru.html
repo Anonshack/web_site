@@ -1,0 +1,62 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About</title>
+</head>
+<style>
+    .button-animation {
+        background-color: #008CBA;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .button-animation:hover {
+        background-color: #004466;
+    }
+
+    @keyframes pulse {
+        0% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.1);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    .button-animation {
+        animation: pulse 0.8s infinite;
+    }
+</style>
+<body style="background-color: white;">
+
+{% for i in data %}
+    <a href="{% url 'home' %}"><h2 style="color: red;">{{ i.id }}{{ i.name }}</h2></a>
+    <p style="color: blue;">{{ i.description }}</p>
+    <a href="{{ i.url }}">{{ i.url }}</a>
+{% endfor %}
+
+<div style="float: right">
+    <button class="button-animation" onclick="setLang('uz')">Uz</button>
+    <button class="button-animation" onclick="setLang('en')">En</button>
+    <button class="button-animation" onclick="setLang('ru')">Ru</button>
+    <script >
+    function setLang(lang) {
+            const Http = new XMLHttpRequest();
+            const url='setLang/' + lang;
+            Http.open("GET", url);
+            Http.send();
+
+            Http.onreadystatechange = (e) => {
+                location.reload();
+            }
+        }
+</script>
+    <h2><a href="{% url 'base' %}">Home</a></h2>
+</body>
+</html>
